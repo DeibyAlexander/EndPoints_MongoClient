@@ -35,5 +35,25 @@ router.get('/ejercicio1', async(req,res)=>{
     }
 })
 
+router.get('/ejercicio2', async(req,res)=>{
+    try {
+        const client = new MongoClient(bases);
+        await client.connect();
+        const db = client.db(nombreBase)
+        const collection = db.collection("Hamburguesas")
+        const result = await collection.find({categoria :"Vegetariana"}).toArray()
+        
+        res.json(result)
+
+        client.close()
+    } catch (error) {
+        res.status()
+        console.log(error);
+    }
+})
+
+
+router.get("/ejercicio")
+
 
 export default router;
