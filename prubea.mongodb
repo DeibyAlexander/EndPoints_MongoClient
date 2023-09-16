@@ -1,0 +1,6 @@
+use("Hamburgueseria")
+db.Chefs.aggregate([
+    {
+        $count: 'nombre'
+    }
+])
